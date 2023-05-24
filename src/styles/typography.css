@@ -1,0 +1,43 @@
+h1, h2, h3, h4, h5, h6, p, small, blockquote, li {
+  text-wrap: balance;
+}
+
+h2, h3, h4, h5, h6 {
+  color: var(--text-2);
+}
+
+p {
+  max-inline-size: var(--size-content-2);
+}
+
+@media (width > 720px) {
+  p, a, blockquote, li, pre {
+    font-size: var(--font-size-4);
+  }
+}
+
+a {
+  margin-inline: calc(var(--size-3)*-1);
+  padding-inline: var(--size-3);
+}
+
+a:hover {
+  text-decoration-color: color-mix(in srgb, var(--brand), transparent 50%);
+} 
+
+a:visited {
+  color: var(--brand);
+}
+
+a:focus {
+  border-radius: var(--radius-round);
+}
+
+aside {
+  font-size: var(--font-size-3);
+  background-color: color-mix(in srgb, var(--brand), transparent 95%);
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-round);
+  padding-inline: var(--size-7);
+  padding-block: var(--size-3);
+}

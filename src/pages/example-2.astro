@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Slide.astro';
+import { Code } from 'astro/components';
+import Controls from '../components/Controls.astro';
+---
+
+<Layout title="Example 2">
+	<main>
+		<h1>Morphing Code</h1>
+    <p>Just look at these awesome snippets!</p>
+<Code code={`.foo { 
+  color: red; 
+  background: blue;
+}`} lang="css" theme="dracula" />
+	</main>
+  <Controls href="index.html" />
+</Layout>

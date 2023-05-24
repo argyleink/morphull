@@ -1,0 +1,65 @@
+@import "transition-style";
+
+/* uncomment if you dont want shared element transitions but only page transitions */
+/* ::view-transition-new(root) {
+  animation: circle-in-hesitate 1s ease forwards;
+}
+
+::view-transition-old(root) {
+  animation: 
+    var(--animation-fade-out) forwards,
+    var(--animation-scale-down) forwards;
+} */
+
+/* you'll also want to remove this if you want page transitions */
+html {
+  view-transition-name: none;
+}
+
+.disable-element-transitions :is(h1, h2, pre, p, a, picture, aside) {
+  view-transition-name: none !important;
+}
+
+h1:nth-child(1 of main h1) {
+  view-transition-name: slide-title;
+}
+
+h2:nth-child(1 of main h2) {
+  view-transition-name: slide-subtitle;
+}
+
+h2:nth-child(2 of main h2) {
+  view-transition-name: slide-subtitle-two;
+}
+
+pre:nth-child(1 of main pre) {
+  view-transition-name: first-snippet;
+}
+
+pre:nth-child(2 of main pre) {
+  view-transition-name: second-snippet;
+}
+
+p:nth-child(1 of main p) {
+  view-transition-name: first-paragraph;
+}
+
+p:nth-child(2 of main p) {
+  view-transition-name: second-paragraph;
+}
+
+a:nth-child(1 of main > a) {
+  view-transition-name: first-link;
+}
+
+a:nth-child(2 of main > a) {
+  view-transition-name: second-link;
+}
+
+main > picture {
+  view-transition-name: slide-emoji;
+}
+
+aside {
+  view-transition-name: slide-aside;
+}

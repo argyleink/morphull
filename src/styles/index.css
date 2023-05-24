@@ -1,0 +1,38 @@
+@import "open-props/style";
+@import "open-props/normalize";
+@import "open-props/colors-hd" ;
+@import "open-props/gray-hd";
+
+@import "slides.css";
+@import "typography.css";
+@import "code.css";
+@import "transitions.css";
+@import "utilities.css";
+
+:root {
+	--brand: color(display-p3 0 1 .75);
+	--gray-chroma: .01;
+	--gray-hue: 270;
+
+	--surface-1: var(--gray-15);
+	--surface-2: var(--gray-14);
+	--surface-3: var(--gray-10);
+	--surface-4: var(--gray-9);
+	
+	--text-1: var(--gray-1);
+	--text-2: var(--teal-1);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--brand: color(display-p3 1 0 1);
+
+		--surface-1: var(--gray-0);
+		--surface-2: var(--gray-2);
+		--surface-3: var(--gray-3);
+		--surface-4: var(--gray-4);
+
+		--text-1: var(--gray-14);
+		--text-2: var(--gray-11);
+	}
+}

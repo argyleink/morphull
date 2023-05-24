@@ -1,0 +1,47 @@
+---
+export interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+<nav class="controls">
+	<a href=`/${href}`>
+		<span class="sr-only">next slide</span>
+		<svg width="32" height="32" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M13.3 17.275q-.3-.3-.288-.725t.313-.725L16.15 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.15L13.3 8.15q-.3-.3-.3-.713t.3-.712q.3-.3.713-.3t.712.3L19.3 11.3q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.687.275t-.713-.3Z"/>
+		</svg>
+	</a>
+</nav>
+
+<script is:inline define:vars={{ href }}>
+	const prefetchLink = document.createElement('link')
+	prefetchLink.rel = 'prefetch'
+	prefetchLink.href = `/${href}`
+	document.head.appendChild(prefetchLink)
+</script>
+
+<style>
+	.controls {
+		view-transition-name: slide-controls;
+		place-self: end;
+		margin: var(--size-fluid-3);
+	}
+
+	.controls > a {
+		display: flex;
+		align-items: center;
+		border-radius: var(--radius-round);
+
+		margin: 0;
+		padding: var(--size-2);
+	}
+
+	.controls > :is(a:hover, a:visited) {
+		color: var(--text-2);
+	}
+
+	.controls > a:hover {
+		box-shadow: 0 0 0 2px var(--brand);
+	}
+</style>

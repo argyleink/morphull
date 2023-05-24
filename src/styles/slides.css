@@ -1,0 +1,13 @@
+main {
+	display: grid;
+	place-items: center;
+	place-self: center;
+	gap: var(--size-3);
+	text-align: center;
+}
+
+main ol {
+	text-align: start;
+	display: grid;
+	gap: var(--size-3);
+}

@@ -1,0 +1,18 @@
+{
+  "name": "astro-slides",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^2.4.1",
+    "open-props": "^1.5.8",
+    "shiki": "^0.14.2",
+    "transition-style": "^0.1.3"
+  }
+}
