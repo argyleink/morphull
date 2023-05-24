@@ -1,55 +1,15 @@
-# Astro Starter Kit: Basics
+# Morphull - Astro Starter Kit
 
-```
-npm create astro@latest -- --template basics
-```
+A morphing or full page transition enabled slide creation starter kit that uses [View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API) to do all the work. 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
-
+Until View Transitions are supported across all browsers, this API and starter kit only works in [Chrome Canary](https://www.google.com/chrome/canary/) with [chrome://flags/#view-transition-on-navigation](chrome://flags/#view-transition-on-navigation) enabled.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside the `/pages` folder you create your slides, each slide is it's own Astro component that uses the `/src/layouts/Slide.astro` layout.
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+There's one component called `Controls.astro` that handles making and placing the next arrow.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## How to get morphing slide pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+It's all generally handled for you! Just use `<h1>` elements, or images or links. Inside the `/src/styles/transitions.css` you'll find the unique names given to the elements that tells the browser which shared elements should morph. Like if you have a code snippet on one page, and the next page also has one, the browser will transition between those snippets.
