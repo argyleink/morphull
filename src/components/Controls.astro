@@ -19,6 +19,13 @@ const { href } = Astro.props;
 	prefetchLink.rel = 'prefetch'
 	prefetchLink.href = `/${href}`
 	document.head.appendChild(prefetchLink)
+
+	window.addEventListener('keydown', e => {
+		if (e.key === 'ArrowRight')
+			window.location = `/${href}`
+		if (e.key === 'ArrowLeft')
+			history.back()
+	})
 </script>
 
 <style>
