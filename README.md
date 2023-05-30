@@ -20,7 +20,7 @@ Full page cross-document transitions can be enabled on a per slide basis, by sim
 
 ### Writing custom cross-document transitions
 
-To write custom cross-document transitions, you can simply hook into the already existing morphull. Currently there are two data attributes that are written to the `<html>` when the page is initialized.
+To write custom cross-document transitions, you can simply hook into the functionality already provided by morphull. Currently, there are two data attributes that are written to the `<html>' when the page is initialized that form the basis for all animations.
 
 | Attribute | Values | Description |
 | --- | --- | --- |
