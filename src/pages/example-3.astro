@@ -9,59 +9,31 @@ import Controls from '../components/Controls.astro';
       <h1>Custom View Transitions!</h1>
     </header>
     <h4>Watch me sliding!</h4>
+    <picture>
+      <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp">
+      <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="250" height="250">
+    </picture>
   </main>
   <Controls href="index.html" />
 </Layout>
 
 <style>
-  @keyframes slide-in {
-    from {
-      translate: 100%;
-    }
-  }
-
-  @keyframes slide-out {
-    to {
-      translate: -100%;
-    }
-  }
-
-  @keyframes slide-in-backwards {
-    from {
-      translate: -100%;
-    }
-  }
-
-  @keyframes slide-out-backwards {
-    to {
-      translate: 100%;
-    }
-  }
-
-  :root {
-    --view-transition-duration: 1s;
-  }
-
-  html[data-view-transition-direction="reload"] {
-    --view-transition-duration: 0;
-  }
-
-  html[data-view-transition="slide"] {
+  html:not([data-view-transition-direction="reload"])[data-view-transition="slide"] {
     &::view-transition-new(root) {
-      animation: slide-in var(--view-transition-duration) forwards;
+      animation: var(--animation-slide-in-left) forwards;
     }
 
     &::view-transition-old(root) {
-      animation: slide-out var(--view-transition-duration) forwards;
+      animation: var(--animation-slide-out-left) forwards;
     }
 
     &[data-view-transition-direction="back"] {
       &::view-transition-new(root) {
-        animation: slide-in-backwards var(--view-transition-duration) forwards;
+        animation: var(--animation-slide-in-right) forwards;
       }
 
       &::view-transition-old(root) {
-        animation: slide-out-backwards var(--view-transition-duration) forwards;
+        animation: var(--animation-slide-out-right) forwards;
       }
     }
   }
