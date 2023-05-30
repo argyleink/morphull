@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Slide.astro';
+import Controls from '../components/Controls.astro';
+---
+
+<Layout title="Smashing Conf: View Transitions" animation="slide">
+  <main>
+    <header>
+      <h1>Custom View Transitions!</h1>
+    </header>
+    <h4>Watch me sliding!</h4>
+    <picture>
+      <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.webp" type="image/webp">
+      <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/512.gif" alt="🔥" width="250" height="250">
+    </picture>
+  </main>
+  <Controls href="index.html" />
+</Layout>
+
+<style>
+  html:not([data-view-transition-direction="reload"])[data-view-transition="slide"] {
+    &::view-transition-new(root) {
+      animation: var(--animation-slide-in-left) forwards;
+    }
+
+    &::view-transition-old(root) {
+      animation: var(--animation-slide-out-left) forwards;
+    }
+
+    &[data-view-transition-direction="back"] {
+      &::view-transition-new(root) {
+        animation: var(--animation-slide-in-right) forwards;
+      }
+
+      &::view-transition-old(root) {
+        animation: var(--animation-slide-out-right) forwards;
+      }
+    }
+  }
+</style>
