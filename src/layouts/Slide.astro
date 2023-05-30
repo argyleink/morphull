@@ -1,9 +1,9 @@
 ---
-import "../styles/index.css";
+import '../styles/index.css';
 
 export interface Props {
-  title: string;
-	animation?: 'page' | 'element' | string;
+    title: string;
+    animation?: 'page' | 'element' | string;
 }
 
 const { title, animation = 'element' } = Astro.props;
@@ -11,42 +11,43 @@ const { title, animation = 'element' } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en" data-view-transition={animation}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="view-transition" content="same-origin" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <slot />
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="view-transition" content="same-origin" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>
 
 <script is:inline>
-  switch (performance.getEntriesByType('navigation')[0].type) {
-    case 'reload':
-      document.documentElement.dataset.viewTransitionDirection = 'reload';
-      break;
-    case 'back_forward': {
-      const prev = sessionStorage.getItem('prev-url');
-      document.documentElement.dataset.viewTransitionDirection =
-        document.referrer === prev ? 'forward' : 'back';
-      break;
+    switch (performance.getEntriesByType('navigation')[0].type) {
+        case 'reload':
+            document.documentElement.dataset.viewTransitionDirection = 'reload';
+            break;
+        case 'back_forward': {
+            const prev = sessionStorage.getItem('prev-url');
+            document.documentElement.dataset.viewTransitionDirection =
+                document.referrer === prev ? 'forward' : 'back';
+            break;
+        }
+        default:
+            document.documentElement.dataset.viewTransitionDirection =
+                'forward';
     }
-    default:
-      document.documentElement.dataset.viewTransitionDirection = 'forward';
-  }
 
-  sessionStorage.setItem('prev-url', location.href);
+    sessionStorage.setItem('prev-url', location.href);
 </script>
 
 <style is:global>
-  body {
-    display: grid;
-  }
+    body {
+        display: grid;
+    }
 
-  body > * {
-    grid-area: 1 / 1;
-  }
+    body > * {
+        grid-area: 1 / 1;
+    }
 </style>
