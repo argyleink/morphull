@@ -19,11 +19,11 @@ const { href } = Astro.props;
 	prefetchLink.rel = 'prefetch'
 	prefetchLink.href = `/${href}`
 	document.head.appendChild(prefetchLink)
-	switch (performance.navigation.type) {
-		case PerformanceNavigation.TYPE_RELOAD:
+	switch (performance.getEntriesByType("navigation")[0].type) {
+		case "reload":
 			document.documentElement.dataset.navDirection = "reload";
 			break;
-		case PerformanceNavigation.TYPE_BACK_FORWARD: {
+		case "back_forward": {
 			const prev = sessionStorage.getItem("prev-url");
 			console.log(prev, document.referrer)
 			document.documentElement.dataset.navDirection = document.referrer === prev ? "forward" : "back";
