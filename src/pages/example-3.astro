@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Slide.astro';
+import Controls from '../components/Controls.astro';
+---
+
+<Layout title="Smashing Conf: View Transitions" animation="slide">
+  <main>
+    <header>
+      <h1>Custom View Transitions!</h1>
+    </header>
+    <h4>Watch me sliding!</h4>
+  </main>
+  <Controls href="index.html" />
+</Layout>
+
+<style>
+  @keyframes slide-in {
+    from {
+      translate: 100%;
+    }
+  }
+
+  @keyframes slide-out {
+    to {
+      translate: -100%;
+    }
+  }
+
+  @keyframes slide-in-backwards {
+    from {
+      translate: -100%;
+    }
+  }
+
+  @keyframes slide-out-backwards {
+    to {
+      translate: 100%;
+    }
+  }
+
+  :root {
+    --view-transition-duration: 1s;
+  }
+
+  html[data-view-transition-direction="reload"] {
+    --view-transition-duration: 0;
+  }
+
+  html[data-view-transition="slide"] {
+    &::view-transition-new(root) {
+      animation: slide-in var(--view-transition-duration) forwards;
+    }
+
+    &::view-transition-old(root) {
+      animation: slide-out var(--view-transition-duration) forwards;
+    }
+
+    &[data-view-transition-direction="back"] {
+      &::view-transition-new(root) {
+        animation: slide-in-backwards var(--view-transition-duration) forwards;
+      }
+
+      &::view-transition-old(root) {
+        animation: slide-out-backwards var(--view-transition-duration) forwards;
+      }
+    }
+  }
+</style>
