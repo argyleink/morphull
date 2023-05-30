@@ -12,14 +12,35 @@
 } */
 
 /* you'll also want to remove this if you want page transitions */
-html {
-  view-transition-name: none;
+
+@keyframes slide-in {
+  from { transform: translateY(-100%) }
+  to { transform: none}
+}
+
+@keyframes slide-out {
+  from { transform: translateY(100%) }
+  to { transform: none}
+}
+
+html[data-nav-direction="reload"]::view-transition {
+  display: none;
+}
+
+::view-transition-group(root) {
+  animation-name: slide-in;
+  animation-duration: 1s;
+}
+
+html[data-nav-direction="back"]::view-transition-group(root) {
+  animation-name: slide-out;
+  animation-duration: 1s;
 }
 
 .disable-element-transitions :is(h1, h2, pre, p, a, picture, aside) {
   view-transition-name: none !important;
 }
-
+/*
 h1:nth-child(1 of main h1) {
   view-transition-name: slide-title;
 }
@@ -63,3 +84,4 @@ main > picture {
 aside {
   view-transition-name: slide-aside;
 }
+*/

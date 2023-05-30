@@ -19,6 +19,24 @@ const { href } = Astro.props;
 	prefetchLink.rel = 'prefetch'
 	prefetchLink.href = `/${href}`
 	document.head.appendChild(prefetchLink)
+	switch (performance.navigation.type) {
+		case PerformanceNavigation.TYPE_RELOAD:
+			document.documentElement.dataset.navDirection = "reload";
+			break;
+		case PerformanceNavigation.TYPE_BACK_FORWARD: {
+			const prev = sessionStorage.getItem("prev-url");
+			console.log(prev, document.referrer)
+			document.documentElement.dataset.navDirection = document.referrer === prev ? "forward" : "back";
+			break;
+		}
+		default:
+			document.documentElement.dataset.navDirection = "forward";
+	}
+
+	sessionStorage.setItem("prev-url", location.href)
+	window.onload = () => {
+			document.documentElement.dataset.navType = "";
+	}
 
 	window.addEventListener('keydown', e => {
 		if (e.key === 'ArrowRight')
