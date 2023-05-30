@@ -23,8 +23,10 @@ const { href } = Astro.props;
 	window.addEventListener('keydown', e => {
 		if (e.key === 'ArrowRight')
 			window.location = `/${href}`
-		if (e.key === 'ArrowLeft')
-			history.back()
+		if (e.key === 'ArrowLeft') {
+			document.referrer && history.back()
+		}
+
 	})
 </script>
 
