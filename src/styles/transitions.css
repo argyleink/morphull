@@ -16,10 +16,6 @@ html:not([data-view-transition-direction="reload"]) {
 	&[data-view-transition='element'] {
 		view-transition-name: none;
 
-		& .disable-element-transitions :is(h1, h2, pre, p, a, picture, aside) {
-			view-transition-name: none !important;
-		}
-
 		& h1:nth-child(1 of main h1) {
 			view-transition-name: slide-title;
 		}
