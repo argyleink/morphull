@@ -23,8 +23,9 @@
   to { transform: none}
 }
 
-html[data-nav-direction="reload"]::view-transition {
-  display: none;
+@keyframes fade-in {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 ::view-transition-group(root) {
@@ -34,6 +35,11 @@ html[data-nav-direction="reload"]::view-transition {
 
 html[data-nav-direction="back"]::view-transition-group(root) {
   animation-name: slide-out;
+  animation-duration: 1s;
+}
+
+html[data-nav-direction="reload"]::view-transition-group(root) {
+  animation-name: fade-in;
   animation-duration: 1s;
 }
 
