@@ -14,20 +14,20 @@ There's one component called `Controls.astro` that handles making and placing th
 
 It's all generally handled for you! Just use `<h1>` elements, or images or links. Inside the `/src/styles/transitions.css` you'll find the unique names given to the elements that tells the browser which shared elements should morph. Like if you have a code snippet on one page, and the next page also has one, the browser will transition between those snippets.
 
-### Enabling full page cross-document transitions
+### Enabling page transitions
 
-Full page cross-document transitions can be enabled on a per slide basis, by simply passing `animation="page"` as a property to the `Layout` / `Slide` component. This will automatically disable slide page morphing.
+Full page transitions can be enabled on a per slide basis, by simply passing `animation="page"` as a property to the `Layout` / `Slide` component. This will on the other hand will automatically disable slide page morphing.
 
-### Writing custom cross-document transitions
+### Writing custom page transitions
 
-To write custom cross-document transitions, you can simply hook into the functionality already provided by morphull. Currently, there are two data attributes that are written to the `<html>' when the page is initialized that form the basis for all animations.
+To write custom page transitions, you can simply hook into the functionality already provided by morphull. Currently, there are two data attributes that are written to the `<html>` when the page is initialized that form the basis for all animations.
 
 | Attribute | Values | Description |
 | --- | --- | --- |
 | `data-view-transition-direction` | `'forward'`, `'back'`, `'reload'` | The direction of navigation. Reload means that a page refresh is initiated. |
 | `data-view-transition` | `'page'`, `'element'`, Custom | Default: `'element'`. <br>  Animation identifier used within CSS |
 
-With the help of these attributes and open-props custom cross-document transitions can be written as easy as:
+With the help of these attributes and open-props custom page transitions can be written as easy as:
 
 ```css
   html:not([data-view-transition-direction="reload"])[data-view-transition="slide"] {
