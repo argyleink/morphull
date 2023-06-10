@@ -21,10 +21,14 @@ const { href } = Astro.props;
 	document.head.appendChild(prefetchLink)
 
 	window.addEventListener('keydown', e => {
-		if (e.key === 'ArrowRight')
+		if (e.key === 'ArrowRight') {
 			window.location = `/${href}`
+		}
 		if (e.key === 'ArrowLeft') {
-			document.referrer && history.back()
+			if (document.referrer) {
+				history.back()
+				e.preventDefault()
+			}
 		}
 
 	})
