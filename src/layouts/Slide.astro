@@ -1,4 +1,5 @@
 ---
+import Controls from '../components/Controls.astro';
 import '../styles/index.css';
 
 export interface Props {
@@ -7,6 +8,12 @@ export interface Props {
 }
 
 const { title, animation = 'element' } = Astro.props;
+
+const slides = await Astro.glob('../pages/*.astro');
+const currentSlideIndex = slides.findIndex(
+	slide => slide.url + '.html' === Astro.url.pathname
+);
+const nextSlide = slides.at(currentSlideIndex + 1) ?? slides.at(0);;
 ---
 
 <!DOCTYPE html>
@@ -20,6 +27,8 @@ const { title, animation = 'element' } = Astro.props;
 	</head>
 	<body>
 		<slot />
+
+		{nextSlide && <Controls href={nextSlide.url + '.html'} />}
 	</body>
 </html>
 
