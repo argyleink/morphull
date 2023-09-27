@@ -6,7 +6,7 @@ export interface Props {
 const { href } = Astro.props;
 ---
 <nav class="controls">
-	<a href=`/${href}`>
+	<a href=`${href}`>
 		<span class="sr-only">next slide</span>
 		<svg width="32" height="32" viewBox="0 0 24 24">
 			<path fill="currentColor" d="M13.3 17.275q-.3-.3-.288-.725t.313-.725L16.15 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.15L13.3 8.15q-.3-.3-.3-.713t.3-.712q.3-.3.713-.3t.712.3L19.3 11.3q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.687.275t-.713-.3Z"/>
@@ -17,14 +17,14 @@ const { href } = Astro.props;
 <script is:inline define:vars={{ href }}>
 	const prefetchLink = document.createElement('link')
 	prefetchLink.rel = 'prefetch'
-	prefetchLink.href = `/${href}`
+	prefetchLink.href = `${href}`
 	document.head.appendChild(prefetchLink)
 
 	window.addEventListener('keydown', e => {
-		if (e.key === 'ArrowRight') {
-			window.location = `/${href}`
+		if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+			window.location = `${href}`
 		}
-		if (e.key === 'ArrowLeft') {
+		if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
 			if (document.referrer) {
 				history.back()
 				e.preventDefault()
