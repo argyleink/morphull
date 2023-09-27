@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "astro": "^2.4.1",
-    "open-props": "^1.5.8",
-    "shiki": "^0.14.2",
+    "open-props": "^1.5.16",
+    "shiki": "^0.14.4",
     "transition-style": "^0.1.3"
   }
 }
