@@ -9,6 +9,10 @@
 @import "transitions.css";
 @import "utilities.css";
 
+@view-transition {
+  navigation: auto;
+}
+
 :root {
 	--brand: color(display-p3 0 1 .75);
 	--gray-chroma: .01;
